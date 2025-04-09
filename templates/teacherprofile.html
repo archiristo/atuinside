@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profilim - ATUinside</title>
+    <link rel="icon" href="{{ url_for('static', filename='ATUinsidelogo.png') }}" type="image/x-icon">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #e6e7e9;
+    }
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #CD332A;
+        color: white;
+        padding: 15px 20px;
+    }
+    .logo {
+        font-size: 1.5em;
+        font-weight: bold;
+        color: #ffffff;
+    }
+    .search-bar {
+        padding: 8px;
+        border-radius: 5px;
+        border: none;
+        width: 300px;
+    }
+    .profile-icon {
+        font-size: 1.5em;
+        cursor: pointer;
+    }
+    main {
+        display: flex;
+        padding: 20px;
+        gap: 20px;
+    }
+    section {
+        background: white;
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+    .sidebar, .forum, .projects {
+        flex: 1;
+    }
+    h2 {
+        color: #e60000;
+    }
+    button {
+        background-color: #e60000;
+        color: white;
+        border: none;
+        padding: 10px;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 10px;
+    }
+    button:hover {
+        background-color: #b30000;
+    }
+</style>
+<body>
+    <header>
+        <div class="logo">
+            <img src="{{ url_for('static', filename='atulogo.png') }}" style="
+            width: 50px;
+            height: 50px;">
+        </div>
+</form>
+
+        <a class="homepage" href="{{ url_for('teacher_dashboard') }}" style="padding: 10px 20px;
+        background-color: #CD332A;
+        color: rgb(255, 255, 255);
+        border: 2px solid white;
+        font-size: 1em;
+        cursor: pointer;
+        border-radius: 20px;
+        transition: background-color 0.3s ease, color 0.3s ease;
+        margin-left: 10px;">Anasayfa</a>
+    </header>
+    <main>
+        <section class="profile" style="margin: auto;">
+            <h2>Profil Bilgileri</h2>
+            <div class="profile-info">
+                <img src="{{ user.profile_picture if user.profile_picture else 'static/default.png' }}" 
+     alt="Profil Fotoğrafı" width="150">
+                <p><strong>Ad Soyad:</strong> {{ session.get('first_name')}} {{ session.get('last_name')}}</p>
+                <p><strong>E-posta:</strong> {{ session.get('email', 'Not available') }}</p>
+            </div>
+        </section>
+    </main>
+    <div class="atuhomepage" style="text-align: center;">
+        <a href="https://www.atu.edu.tr/" style="color: black;">ATÜ Anasayfa</a>
+    </div>
+    <div class="atuobs" style="text-align: center;">
+        <a href="https://obs.atu.edu.tr/" style="color: black;">ATÜ ÖBS</a>
+    </div>
+    <footer style="color: black; text-align: center;">
+        <p>&copy; 2025 ATUinside</p>
+    </footer>
+</body>
+</html>

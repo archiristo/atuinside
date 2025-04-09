@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forum - ATUinside</title>
+    <link rel="icon" href="{{ url_for('static', filename='ATUinsidelogo.png') }}" type="image/x-icon">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #e6e7e9;
+    }
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #CD332A;
+        color: white;
+        padding: 15px 20px;
+    }
+    .logo {
+        font-size: 1.5em;
+        font-weight: bold;
+        color: #ffffff;
+    }
+    .search-bar {
+        padding: 8px;
+        border-radius: 5px;
+        border: none;
+        width: 300px;
+    }
+    .profile-icon {
+        font-size: 1.5em;
+        cursor: pointer;
+    }
+    main {
+        display: flex;
+        padding: 20px;
+        gap: 20px;
+    }
+    section {
+        background: white;
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+    .sidebar, .forum, .projects {
+        flex: 1;
+    }
+    h2 {
+        color: #e60000;
+    }
+    button {
+        background-color: #e60000;
+        color: white;
+        border: none;
+        padding: 10px;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 10px;
+    }
+    button:hover {
+        background-color: #b30000;
+    }
+</style>
+<body>
+    <header>
+        <div class="logo">
+            <img src="{{ url_for('static', filename='atulogo.png') }}" style="
+            width: 50px;
+            height: 50px;">
+        </div>
+
+    </header>
+    <div style="width: fit-content; margin: auto;">
+<h1>Forum Konuları</h1>
+<ul>
+        {% for topic in topics %}
+            <li>
+                <strong><a href="{{ url_for('view_topic', topic_id=topic.id) }}">{{ topic.title }}</a></strong> 
+                - {{ topic.author }} ({{ topic.created_at.strftime('%Y-%m-%d %H:%M') }})
+                <p>{{ topic.content }}</p>
+            </li>
+        {% endfor %}
+</ul>
+
+<a href="{{ url_for('create_topic') }}"><button>Yeni Konu Aç</button></a></div>
+<footer style="color: black; text-align: center;">
+    <p>&copy; 2025 ATUinside</p>
+</footer>
+</body></html>

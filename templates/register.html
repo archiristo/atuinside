@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kayıt Ol - ATUinside</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='ATUinsidelogo.png') }}" type="image/x-icon">
+</head>
+<body style="text-align: center; background-color: #e6e7e9; font-family: system-ui, -apple-system, BlinkMacSystemFont, 
+'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; width: 350px; height: 550px; margin:auto;" >
+<header>
+    <div class="logo">
+        <img src="{{ url_for('static', filename='greyatu.png') }}">
+    </div>
+</header>
+    <div style="background-color: #CD332A; border-radius: 35px;">
+    <h2>Kayıt Ol</h2>
+    <form action="{{ url_for('register') }}" method="POST">
+        <label for="email">E-posta:</label>
+        <input type="email" id="email" name="email" required>
+        <p class="error" id="email-error"></p>
+        <label for="first_name">Ad:</label>
+        <input type="text" id="first_name" name="first_name" required>
+<br>
+<br>
+        <label for="last_name">Soyad:</label>
+        <input type="text" id="last_name" name="last_name" required>
+<br>
+<br>
+        <label for="password">Şifre:</label>
+        <input type="password" id="password" name="password" required>
+        <br>
+        <br>
+        <label for="confirm-password">Şifre Tekrar:</label>
+        <input type="password" id="confirm-password" name="confirm-password" required>
+        <br>
+        <br>
+        <button type="submit" style="padding: 10px 20px;
+        background-color: #CD332A;
+        color: rgb(255, 255, 255);
+        border: 2px solid white;
+        font-size: 1em;
+        cursor: pointer;
+        border-radius: 20px;
+        transition: background-color 0.3s ease, color 0.3s ease;
+        margin-left: 10px;">Kayıt Ol</button>
+    </form>
+    <br>
+    <p>Zaten bir hesabın var mı?</p>
+     <a class="login" href="{{ url_for('login') }}" style="padding: 10px 20px;
+        background-color: #CD332A;
+        color: rgb(255, 255, 255);
+        border: 2px solid white;
+        font-size: 1em;
+        cursor: pointer;
+        border-radius: 20px;
+        transition: background-color 0.3s ease, color 0.3s ease;
+        margin-left: 10px;">Giriş yap</a>
+
+    <script>
+        document.querySelector('form').addEventListener('submit', function(event) {
+            let emailField = document.getElementById('email');
+            let emailError = document.getElementById('email-error');
+            let emailPattern = /@(atu\.edu\.tr|ogr\.atu\.edu\.tr)$/;
+            
+            if (!emailPattern.test(emailField.value)) {
+                emailError.textContent = "Sadece ATÜ e-postaları ile kayıt olunabilir!";
+                event.preventDefault();
+            } else {
+                emailError.textContent = "";
+            }
+        });
+    </script>
+    
+    <footer style="color: black; text-align: center;">
+        <p>&copy; 2025 ATUinside</p>
+    </footer></div>
+</body>
+</html>
